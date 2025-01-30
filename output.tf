@@ -21,3 +21,7 @@ output "rds_secret_name" {
 output "bia_repo_url" {
   value = aws_ecr_repository.bia.repository_url
 }
+
+output "alb_url" {
+  value = aws_lb.bia_alb_internal_tf.dns_name
+}
