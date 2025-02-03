@@ -35,3 +35,16 @@ resource "aws_lb_listener" "http" {
     target_group_arn = aws_lb_target_group.tg_bia_tf.id
     }
 }
+
+resource "aws_lb_listener" "https" {
+  load_balancer_arn = aws_lb.bia_alb_internal_tf.id
+  port              = 443
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+  certificate_arn   = data.aws_acm_certificate.certificado.arn
+
+  default_action {
+    type             = "forward"
+    target_group_arn = aws_lb_target_group.tg_bia_tf.id
+  }
+}
