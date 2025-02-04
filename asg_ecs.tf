@@ -1,7 +1,7 @@
 resource "aws_autoscaling_group" "ecs" {
   name_prefix               = "cluster-ecs-bia-asg-tf-"
   vpc_zone_identifier       = [aws_subnet.subnet_publica_zona_a.id, aws_subnet.subnet_publica_zona_b.id]
-  min_size                  = 0
+  min_size                  = 1
   desired_capacity          = 1
   max_size                  = 2
   health_check_grace_period = 0
@@ -28,4 +28,12 @@ resource "aws_autoscaling_group" "ecs" {
     value               = ""
     propagate_at_launch = true
   }
+}
+
+resource "aws_autoscaling_lifecycle_hook" "ecs_terminate_hook" {
+  name                   = "ecs-managed-draining-termination-hook"
+  autoscaling_group_name = aws_autoscaling_group.ecs.name
+  lifecycle_transition   = "autoscaling:EC2_INSTANCE_TERMINATING"
+  heartbeat_timeout      = 60
+  default_result         = "CONTINUE"
 }

@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "ecs_instance_role" {
 
 
 resource "aws_iam_role" "ecs_instance_role" {
-  name_prefix        = "ecs-instace-role-tf"
+  name_prefix        = "ecs-instace-role-tf-"
   assume_role_policy = data.aws_iam_policy_document.ecs_instance_role.json
 }
 
@@ -27,7 +27,7 @@ resource "aws_iam_role_policy_attachment" "ssm_managed_instance_core" {
 }
 
 resource "aws_iam_instance_profile" "ecs_node" {
-  name_prefix = "ecs-instance-role-tf-profile"
+  name_prefix = "ecs-instance-role-tf-profile-"
   path        = "/ecs/instance/"
   role        = aws_iam_role.ecs_instance_role.name
 }
