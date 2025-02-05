@@ -12,3 +12,15 @@ resource "aws_cloudfront_vpc_origin" "alb_vpc_origin" {
     }
   }
 }
+
+data "aws_security_group" "cloudfront_vpc_origin_sg" {
+  filter {
+    name   = "group-name"
+    values = ["CloudFront-VPCOrigins-Service-SG"]
+  }
+
+  filter {
+    name   = "vpc-id"
+    values = [aws_vpc.bia_tf_vpc.id]  # Substitua pelo ID do VPC onde está o ALB
+  }
+}

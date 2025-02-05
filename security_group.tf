@@ -96,7 +96,23 @@ resource "aws_security_group" "bia_alb_tf" {
     to_port     = 443
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
-  }  
+  }
+   ingress {
+    description = "acesso do vpc origin 443"
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = []
+    security_groups = [data.aws_security_group.cloudfront_vpc_origin_sg.id]
+  }
+  ingress {
+    description = "acesso do vpc origin 80"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = []
+    security_groups = [data.aws_security_group.cloudfront_vpc_origin_sg.id]
+  } 
   egress {
       from_port   = 0
       to_port     = 0

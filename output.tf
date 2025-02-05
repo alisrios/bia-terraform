@@ -29,3 +29,7 @@ output "alb_url" {
 output "certificado_arn" {
   value = data.aws_acm_certificate.certificado.arn
 }
+
+output "cloudfront_vpc_origin_sg_id" {
+  value = data.aws_security_group.cloudfront_vpc_origin_sg.id
+}
