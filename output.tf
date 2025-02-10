@@ -1,6 +1,6 @@
 output "instance_ip" {
   description = "Ip da instancia bia-dev-tf"
-  value = aws_instance.bia_dev_tf.public_ip  
+  value       = aws_instance.bia_dev_tf.public_ip
 }
 
 output "rds_endpoint" {
@@ -15,8 +15,8 @@ output "rds_secrets" {
 
 output "rds_secret_name" {
   description = "Nome do meu segredo"
-  value = data.aws_secretsmanager_secret.db_bia_tf.name
-}  
+  value       = data.aws_secretsmanager_secret.db_bia_tf.name
+}
 
 output "bia_repo_url" {
   value = aws_ecr_repository.bia_tf.repository_url
@@ -30,6 +30,6 @@ output "certificado_arn" {
   value = data.aws_acm_certificate.certificado.arn
 }
 
-output "cloudfront_vpc_origin_sg_id" {
-  value = data.aws_security_group.cloudfront_vpc_origin_sg.id
+output "cloudfront_vpc_origin" {
+  value = aws_cloudfront_vpc_origin.alb_vpc_origin.id
 }

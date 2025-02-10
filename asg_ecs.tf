@@ -16,7 +16,7 @@ resource "aws_autoscaling_group" "ecs" {
   lifecycle {
     ignore_changes = [desired_capacity]
   }
-  
+
   tag {
     key                 = "Name"
     value               = "cluster-bia-tf"

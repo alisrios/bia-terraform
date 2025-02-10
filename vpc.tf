@@ -1,8 +1,8 @@
 ##Criar VPC
 resource "aws_vpc" "bia_tf_vpc" {
-  cidr_block       = "10.0.0.0/16"
-  instance_tenancy = "default"
-  enable_dns_support = true
+  cidr_block           = "10.0.0.0/16"
+  instance_tenancy     = "default"
+  enable_dns_support   = true
   enable_dns_hostnames = true
 
   tags = {
@@ -12,10 +12,10 @@ resource "aws_vpc" "bia_tf_vpc" {
 
 ##Criar Subnet Publica zona a
 resource "aws_subnet" "subnet_publica_zona_a" {
-  vpc_id     = aws_vpc.bia_tf_vpc.id
-  cidr_block = "10.0.0.0/20"
-  availability_zone = "us-east-1a"
-  map_public_ip_on_launch = true  # Habilita IP público automático
+  vpc_id                  = aws_vpc.bia_tf_vpc.id
+  cidr_block              = "10.0.0.0/20"
+  availability_zone       = "us-east-1a"
+  map_public_ip_on_launch = true # Habilita IP público automático
 
   tags = {
     Name = "subnet-publica-zona-a"
@@ -24,10 +24,10 @@ resource "aws_subnet" "subnet_publica_zona_a" {
 
 ##Criar Subnet Publica zona b
 resource "aws_subnet" "subnet_publica_zona_b" {
-  vpc_id     = aws_vpc.bia_tf_vpc.id
-  cidr_block = "10.0.16.0/20"
-  availability_zone = "us-east-1b"
-  map_public_ip_on_launch = true  # Habilita IP público automático
+  vpc_id                  = aws_vpc.bia_tf_vpc.id
+  cidr_block              = "10.0.16.0/20"
+  availability_zone       = "us-east-1b"
+  map_public_ip_on_launch = true # Habilita IP público automático
 
   tags = {
     Name = "subnet-publica-zona-b"
@@ -36,8 +36,8 @@ resource "aws_subnet" "subnet_publica_zona_b" {
 
 ##Criar Subnet Privada zona a
 resource "aws_subnet" "subnet_privada_zona_a" {
-  vpc_id     = aws_vpc.bia_tf_vpc.id
-  cidr_block = "10.0.128.0/20"
+  vpc_id            = aws_vpc.bia_tf_vpc.id
+  cidr_block        = "10.0.128.0/20"
   availability_zone = "us-east-1a"
 
   tags = {
@@ -47,8 +47,8 @@ resource "aws_subnet" "subnet_privada_zona_a" {
 
 ##Criar Subnet Privada zona b
 resource "aws_subnet" "subnet_privada_zona_b" {
-  vpc_id     = aws_vpc.bia_tf_vpc.id
-  cidr_block = "10.0.144.0/20"
+  vpc_id            = aws_vpc.bia_tf_vpc.id
+  cidr_block        = "10.0.144.0/20"
   availability_zone = "us-east-1b"
 
   tags = {

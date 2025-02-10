@@ -3,7 +3,7 @@ data "aws_route53_zone" "primary" {
 }
 
 resource "aws_route53_record" "bia_tf" {
-  zone_id = data.aws_route53_zone.primary.zone_id  # Substitua pelo ID correto da sua zona
+  zone_id = data.aws_route53_zone.primary.zone_id # Substitua pelo ID correto da sua zona
   name    = "bia-tf.alisriosti.com.br"
   type    = "CNAME"
   ttl     = 300

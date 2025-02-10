@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "ecs_task_role" {
 resource "aws_iam_policy" "get_secret_bia_db" {
   name        = "GetSecretBiaDB"
   description = "Policy para recuperar secrets da bia"
-  
+
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
