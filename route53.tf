@@ -7,5 +7,5 @@ resource "aws_route53_record" "bia_tf" {
   name    = "bia-tf.alisriosti.com.br"
   type    = "CNAME"
   ttl     = 300
-  records = [aws_cloudfront_distribution.bia_tf.domain_name]
+  records = [aws_cloudfront_distribution.cdn_tf.domain_name]
 }
