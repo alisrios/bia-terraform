@@ -23,7 +23,7 @@ resource "aws_iam_policy" "get_secret_bia_db" {
           "secretsmanager:GetSecretValue"
         ],
         Effect   = "Allow",
-        Resource = aws_db_instance.db_bia_tf.master_user_secret[0].secret_arn
+        Resource = "${tolist(aws_db_instance.db_bia_tf.master_user_secret)[0].secret_arn}"
       }
     ]
   })
