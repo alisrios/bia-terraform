@@ -7,7 +7,7 @@ resource "aws_lb" "bia_alb_internal_tf" {
 }
 
 resource "aws_lb_target_group" "tg_bia_tf" {
-  name_prefix          = "tg-tf"
+  name                 = "tg-bia-tf"
   vpc_id               = aws_vpc.bia_tf_vpc.id
   protocol             = "HTTP"
   port                 = 80

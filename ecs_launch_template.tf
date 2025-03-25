@@ -3,7 +3,7 @@ data "aws_ssm_parameter" "ecs_node_ami" {
 }
 
 resource "aws_launch_template" "ecs_ec2" {
-  name_prefix            = "cluster-bia-tf-"
+  name                   = "cluster-bia-tf"
   image_id               = data.aws_ssm_parameter.ecs_node_ami.value
   instance_type          = "t4g.small"
   vpc_security_group_ids = [aws_security_group.bia_ec2_tf.id]

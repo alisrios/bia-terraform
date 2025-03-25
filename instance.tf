@@ -14,8 +14,8 @@ resource "aws_instance" "bia_dev_tf" {
   #volume
   root_block_device {
     volume_size = 15
-    #volume_type = "gp3"
-    encrypted = true
+    volume_type = "gp3"
+    encrypted   = true
   }
   tags = {
     Name     = var.aws_instance_name
